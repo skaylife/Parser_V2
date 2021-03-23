@@ -7,6 +7,12 @@ def extract_max_page():
   request = requests.get(url)
   soup = BeautifulSoup(request.text, 'html.parser')
   pages = soup.find('div', {'class': 's-pagination'}).find_all('a')
+  # while True:
+  #   pages = soup.find('div', {'class': 's-pagination'}).find_all('a')
+  #   if pages == None:
+  #     print('Pgae == None')
+  #     break
+
   last_page = int(pages[-2].get_text(strip=True))
   return last_page
 
@@ -31,7 +37,6 @@ def extract_jobs(last_page):
       job = extract_job(result)
       jobs.append(job)
   return jobs
-
 
 def get_jobs():
   max_page = extract_max_page()

@@ -2,11 +2,27 @@ from headhunter import get_jobs as hh_get_jobs
 from so import get_jobs as so_get_jobs
 from save_csv import save_to_csv
 
-hh_jobs = hh_get_jobs()
-so_jobs = so_get_jobs()
+# HH = 0 / SO = 1 / HH & SO 3
+check = 3
+if check == 1: 
+  so_jobs = so_get_jobs()
+  save_to_csv(so_jobs)
+elif check == 0:
+  hh_jobs = hh_get_jobs()
+  save_to_csv(hh_jobs)
+else:
+  hh_jobs = hh_get_jobs()
+  so_jobs = so_get_jobs()
+  jobs = hh_jobs + so_jobs 
+  save_to_csv(jobs)
 
-jobs = hh_jobs + so_jobs 
-save_to_csv(jobs)
+# hh_jobs = hh_get_jobs()
+# so_jobs = so_get_jobs()
+
+# jobs = hh_jobs + so_jobs 
+# save_to_csv(jobs)
+# save_to_csv(so_jobs)
+# save_to_csv(hh_jobs)
 
 
 
